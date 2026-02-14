@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAYAFTERWIN - Elite Football Intelligence</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --primary-green: #00ff88;
+      --secondary-green: #00cc6a;
+      --dark-bg: #0a0e1a;
+      --darker-bg: #050811;
+      --card-bg: rgba(15, 25, 40, 0.8);
+      --accent-gold: #ffd700;
+      --text-primary: #ffffff;
+      --text-secondary: #b8c5d6;
+      --gradient-primary: linear-gradient(135deg, #00ff88, #00cc6a);
+      --gradient-secondary: linear-gradient(135deg, #1a1a2e, #16213e);
+      --gradient-card: linear-gradient(145deg, rgba(15, 25, 40, 0.9), rgba(20, 30, 50, 0.6));
+      --shadow-glow: 0 0 30px rgba(0, 255, 136, 0.3);
+      --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {font-family:'Poppins',sans-serif; background:var(--dark-bg); color:var(--text-primary); overflow-x:hidden; position:relative;}
+
+    .bg-animation {position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; background: linear-gradient(-45deg, #0a0e1a, #1a1a2e, #16213e, #0f1419); background-size:400% 400%; animation:gradientShift 15s ease infinite;}
+    @keyframes gradientShift {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+
+    header {position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:var(--gradient-secondary); overflow:hidden;}
+    .hero-stadium {position:absolute; top:0; left:0; width:100%; height:100%; background: #111 url('https://via.placeholder.com/1920x1080') center/cover no-repeat; opacity:0.1; z-index:0;}
+    .logo-container {position:relative; z-index:2; transform:translateY(0); animation:heroFloat 3s ease-in-out infinite alternate;}
+    @keyframes heroFloat {0%{transform:translateY(0px);}100%{transform:translateY(-20px);}}
+    .main-logo {font-family:'Orbitron', monospace; font-size:clamp(3rem,8vw,6rem); font-weight:900; margin-bottom:1rem; text-shadow:0 0 20px rgba(0,255,136,0.5); letter-spacing:3px;}
+    .main-logo .pay {color:var(--text-primary);}
+    .main-logo .after {color:var(--primary-green);}
+    .main-logo .win {color:var(--accent-gold);}
+    .main-logo .info {color:var(--text-secondary); font-size:0.6em;}
+    .tagline {font-size:1.5rem; margin-bottom:2rem; font-weight:300; letter-spacing:2px; opacity:0.8; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip:text;}
+    .cta-button {display:inline-flex; align-items:center; gap:15px; background:var(--gradient-primary); color:var(--dark-bg); padding:18px 40px; border-radius:50px; text-decoration:none; font-weight:600; font-size:1.1rem; transition:all 0.3s ease; box-shadow:var(--shadow-glow); position:relative; overflow:hidden;}
+    .cta-button:hover {transform:translateY(-5px) scale(1.05); box-shadow:0 15px 40px rgba(0,255,136,0.4);}
+
+    .main-content {max-width:1400px; margin:0 auto; padding:0 2rem;}
+    .section {padding:100px 0; position:relative;}
+    .section-title {text-align:center; font-size:3.5rem; font-weight:700; margin-bottom:2rem; background:var(--gradient-primary); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; position:relative;}
+    .section-title::after {content:''; position:absolute; bottom:-10px; left:50%; transform:translateX(-50%); width:100px; height:4px; background:var(--gradient-primary); border-radius:2px;}
+    .section-subtitle {text-align:center; font-size:1.2rem; color:var(--text-secondary); margin-bottom:4rem; max-width:600px; margin-left:auto; margin-right:auto;}
+
+    .contact-section {background: var(--gradient-card); border-radius:30px; padding:4rem 2rem; text-align:center; border:1px solid rgba(0,255,136,0.2); backdrop-filter:blur(15px); position:relative; overflow:hidden;}
+    .contact-section::before {content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background: conic-gradient(from 0deg, transparent, rgba(0,255,136,0.1), transparent); animation:rotate 20s linear infinite; z-index:0;}
+    @keyframes rotate {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+    .contact-content {position:relative; z-index:2;}
+    .contact-buttons {display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; margin-top:2rem;}
+    .contact-btn {display:inline-flex; align-items:center; gap:12px; padding:15px 30px; border-radius:50px; text-decoration:none; font-weight:600; transition:all 0.3s ease; backdrop-filter:blur(10px); border:2px solid;}
+    .telegram-btn {background:linear-gradient(135deg,#0088cc,#229ed9); color:white; border-color:#0088cc;}
+    .whatsapp-btn {background:linear-gradient(135deg,#25d366,#128c7e); color:white; border-color:#25d366;}
+    .contact-btn:hover {transform:translateY(-3px) scale(1.05); box-shadow:0 10px 25px rgba(0,0,0,0.3);}
+    footer {background:var(--darker-bg); padding:4rem 2rem 2rem; text-align:center; border-top:1px solid rgba(0,255,136,0.2);}
+    .footer-logo {font-family:'Orbitron', monospace; font-size:2rem; font-weight:700; margin-bottom:1rem; color:var(--primary-green);}
+    .social-links {display:flex; justify-content:center; gap:1rem; margin:2rem 0;}
+    .social-link {display:flex; align-items:center; justify-content:center; width:50px; height:50px; background:var(--gradient-card); border-radius:50%; color:var(--primary-green); text-decoration:none; transition:all 0.3s ease; border:1px solid rgba(0,255,136,0.3);}
+    .social-link:hover {transform:translateY(-5px) scale(1.1); box-shadow:0 10px 25px rgba(0,255,136,0.3); background:var(--primary-green); color:var(--dark-bg);}
+    .copyright {color:var(--text-secondary); font-size:0.9rem; margin-top:2rem; opacity:0.7;}
+  </style>
+</head>
+<body>
+  <div class="bg-animation"></div>
+
+  <header id="header">
+    <div class="hero-stadium"></div>
+    <div class="logo-container">
+      <div class="main-logo">
+        <span class="pay">PAY</span><span class="after">AFTER</span><span class="win">WIN</span><span class="info">.info</span>
+      </div>
+      <div class="tagline">ELITE FOOTBALL INTELLIGENCE</div>
+      <a href="https://t.me/ps_rigged" class="cta-button">
+        <i class="fas fa-rocket"></i>
+        JOIN THE WINNERS
+      </a>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <section id="contact" class="section">
+      <div class="contact-section">
+        <div class="contact-content">
+          <h3 style="color: var(--primary-green); font-family:'Orbitron', monospace;">ELITE ACCESS</h3>
+          <div class="contact-buttons">
+            <a href="https://t.me/ps_rigged" class="contact-btn telegram-btn">
+              <i class="fab fa-telegram"></i>
+              <span>Telegram: @ps_rigged</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-logo">PAY<span style="color: var(--accent-gold);">AFTER</span>WIN</div>
+    <div class="social-links">
+      <a href="https://t.me/ps_rigged" class="social-link">
+        <i class="fab fa-telegram"></i>
+      </a>
+    </div>
+    <div class="copyright">
+      © 2026 PAYAFTERWIN.info - All Rights Reserved
+    </div>
+  </footer>
+</body>
+</html>
